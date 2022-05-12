@@ -102,22 +102,21 @@ void showDigit (int number, int digit)
      digitalWrite(digitPins[digit], HIGH);
   }
 
-
-// the loop routine runs over and over again forever:
-void loop() {
   int low = 0;
-  int mid = 1;
   int high = 2;
   int state = low;
 
+// the loop routine runs over and over again forever:
+void loop() {
+
   hall_value = analogRead(analog_input_pin);
   
-  if((hall_value > 650) and (state = low))
+  if((hall_value > 650) && (state == low))
   {
     state = high;
     mycounter ++;
   } 
-  else if ((state = high) and (hall_value < 650))
+  else if ((state == high) && (hall_value < 650))
   {
     state = low;
   }
